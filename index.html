@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALMAIRA — Contemporary Modest Wear</title>
+  <meta name="description" content="Koleksi busana muslim modern dengan material breathable premium—dirancang untuk kenyamanan ibadah dan aktivitas harian Anda." />
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            alabaster: '#FAF8F5',
+            sand: '#F2ECE4',
+            taupe: '#E5DDD3',
+            charcoal: '#1E1D1B',
+            muted: '#6E6962',
+            sage: '#5E6B5C',
+            champagne: '#A68A64',
+            obsidian: '#141312',
+            nightcard: '#1E1C1A',
+          },
+          boxShadow: {
+            soft: '0 10px 40px -10px rgba(30, 29, 27, 0.06)',
+            editorial: '0 20px 50px -15px rgba(30, 29, 27, 0.12)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom subtle scrollbar & smooth transitions */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(166, 138, 100, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(166, 138, 100, 0.6);
+    }
+
+    /* Subtle fabric weave pattern overlay for editorial cards */
+    .fabric-texture {
+      background-image: radial-gradient(rgba(166, 138, 100, 0.12) 1px, transparent 0);
+      background-size: 16px 16px;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-up {
+      animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="bg-alabaster text-charcoal dark:bg-obsidian dark:text-[#F4EFEA] font-sans antialiased selection:bg-champagne/20 selection:text-champagne transition-colors duration-300 overflow-x-hidden">
+
+  <!-- =====================================================================
+       1. TOP ANNOUNCEMENT BAR & STICKY NAVBAR
+       ===================================================================== -->
+  <div class="bg-charcoal dark:bg-[#24211E] text-alabaster text-[11px] sm:text-xs py-2.5 px-4 text-center tracking-wide border-b border-white/10">
+    <p class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-champagne"></span>
+      <span>Gratis Ongkir Seluruh Indonesia untuk Pembelian Minimal <strong class="font-semibold text-[#E6D5BE]">Rp 350.000</strong></span>
+      <span class="hidden sm:inline text-white/40">|</span>
+      <span class="text-white/90">Garansi Tukar Ukuran 7 Hari</span>
+    </p>
+  </div>
+
+  <header class="sticky top-0 z-40 bg-alabaster/90 dark:bg-obsidian/90 backdrop-blur-md border-b border-taupe/70 dark:border-white/10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <a href="#beranda" class="flex flex-col items-start group focus:outline-none">
+        <span class="font-serif text-2xl sm:text-3xl font-semibold tracking-[0.18em] text-charcoal dark:text-alabaster group-hover:text-champagne transition-colors">
+          ALMAIRA
+        </span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.28em] text-muted dark:text-[#A8A096] -mt-1">
+          Contemporary Modest Wear
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-charcoal/80 dark:text-alabaster/80">
+        <a href="#beranda" class="hover:text-champagne transition-colors py-2">Beranda</a>
+        <a href="#katalog" class="hover:text-champagne transition-colors py-2">Katalog</a>
+        <a href="#keunggulan" class="hover:text-champagne transition-colors py-2">Keunggulan</a>
+        <a href="#testimoni" class="hover:text-champagne transition-colors py-2">Testimoni</a>
+        <button type="button" onclick="openSizeModal()" class="hover:text-champagne transition-colors py-2 flex items-center gap-1.5">
+          <span>Panduan Ukuran</span>
+          <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-sand dark:bg-white/10 text-champagne font-semibold">Size</span>
+        </button>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-1.5 sm:gap-3">
+        <!-- Dark / Light Mode Toggle -->
+        <button
+          id="themeToggleBtn"
+          type="button"
+          aria-label="Ubah Tema Gelap atau Terang"
+          class="p-2.5 rounded-full text-charcoal/80 dark:text-alabaster/80 hover:bg-sand dark:hover:bg-white/10 transition-colors"
+        >
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-champagne" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+        </button>
+
+        <!-- Shopping Cart Trigger Button -->
+        <button
+          type="button"
+          onclick="openCartDrawer()"
+          aria-label="Buka Keranjang Belanja"
+          class="relative p-2.5 rounded-full text-charcoal dark:text-alabaster hover:bg-sand dark:hover:bg-white/10 transition-colors flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <span class="hidden sm:inline text-xs font-medium">Keranjang</span>
+          <span
+            id="cartBadge"
+            class="min-w-[20px] h-5 px-1.5 rounded-full bg-champagne text-white text-[11px] font-semibold flex items-center justify-center shadow-sm transition-transform duration-200"
+          >
+            0
+          </span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobileMenuBtn"
+          type="button"
+          onclick="toggleMobileMenu()"
+          aria-label="Menu Navigasi"
+          class="lg:hidden p-2.5 rounded-full text-charcoal dark:text-alabaster hover:bg-sand dark:hover:bg-white/10 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-taupe/60 dark:border-white/10 bg-alabaster dark:bg-obsidian px-4 py-4 space-y-2">
+      <a href="#beranda" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-sand dark:hover:bg-white/5">Beranda</a>
+      <a href="#katalog" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-sand dark:hover:bg-white/5">Katalog Koleksi</a>
+      <a href="#keunggulan" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-sand dark:hover:bg-white/5">Keunggulan Bahan</a>
+      <a href="#testimoni" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-sand dark:hover:bg-white/5">Testimoni Pelanggan</a>
+      <button type="button" onclick="toggleMobileMenu(); openSizeModal();" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium text-champagne hover:bg-sand dark:hover:bg-white/5">
+        Panduan Ukuran (Size Chart)
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         2. HERO SECTION (EDITORIAL MINIMALIST SHOWCASE)
+         ===================================================================== -->
+    <section id="beranda" class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 lg:py-24">
+      <!-- Decorative warm ambient glow -->
+      <div class="pointer-events-none absolute -top-24 right-0 w-96 h-96 rounded-full bg-champagne/10 blur-3xl"></div>
+      <div class="pointer-events-none absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-sage/10 blur-3xl"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+          <!-- Left Editorial Copy -->
+          <div class="lg:col-span-6 space-y-6 sm:space-y-8 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand/90 dark:bg-white/5 border border-taupe dark:border-white/10 text-xs font-medium text-champagne tracking-wider uppercase">
+              <span class="w-1.5 h-1.5 rounded-full bg-champagne animate-pulse"></span>
+              <span>Koleksi Signature 2026 &bull; Breathable Luxury</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-semibold leading-[1.1] tracking-tight text-charcoal dark:text-alabaster">
+              Keanggunan dalam <span class="italic font-normal text-champagne">Kesederhanaan.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-muted dark:text-[#B5AEA4] leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Koleksi busana muslim modern dengan material breathable premium—dirancang untuk kenyamanan ibadah dan aktivitas harian Anda.
+            </p>
+
+            <!-- Dual CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <a
+                href="#katalog"
+                class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-charcoal dark:bg-champagne text-alabaster dark:text-white text-sm font-medium tracking-wide hover:bg-champagne dark:hover:bg-[#937752] transition-all shadow-soft flex items-center justify-center gap-2"
+              >
+                <span>Jelajahi Koleksi</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                </svg>
+              </a>
+
+              <a
+                href="https://wa.me/6281234567890?text=Assalamu'alaikum%20Admin%20ALMAIRA,%20saya%20ingin%20bertanya%20mengenai%20koleksi%20busana%20muslim%20terbaru."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-transparent border border-charcoal/25 dark:border-white/20 text-charcoal dark:text-alabaster text-sm font-medium tracking-wide hover:border-sage hover:text-sage dark:hover:border-champagne dark:hover:text-champagne transition-all flex items-center justify-center gap-2"
+              >
+                <svg class="w-4 h-4 text-sage dark:text-[#8FA88B]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z" />
+                </svg>
+                <span>Tanya Admin via WhatsApp</span>
+              </a>
+            </div>
+
+            <!-- Editorial Micro-Trust Metrics -->
+            <div class="pt-4 border-t border-taupe/70 dark:border-white/10 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+              <div>
+                <p class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal dark:text-alabaster">100%</p>
+                <p class="text-xs text-muted dark:text-[#A8A096]">Serat Breathable</p>
+              </div>
+              <div>
+                <p class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal dark:text-alabaster">4.9/5</p>
+                <p class="text-xs text-muted dark:text-[#A8A096]">1.240+ Ulasan</p>
+              </div>
+              <div>
+                <p class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal dark:text-alabaster">7 Hari</p>
+                <p class="text-xs text-muted dark:text-[#A8A096]">Garansi Tukar Size</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Editorial Visual Showcase -->
+          <div class="lg:col-span-6">
+            <div class="relative max-w-lg mx-auto">
+              <!-- Main Arch Lookbook Card -->
+              <div class="relative rounded-t-[180px] rounded-b-3xl overflow-hidden bg-gradient-to-b from-[#EDE4D8] via-[#E3D7C7] to-[#D4C4B0] dark:from-[#292521] dark:via-[#221E1B] dark:to-[#1B1815] p-6 sm:p-8 shadow-editorial border border-white/60 dark:border-white/10">
+                <!-- Arch Inner Frame -->
+                <div class="relative rounded-t-[155px] rounded-b-2xl overflow-hidden aspect-[4/4.6] bg-[#F7F3EE] dark:bg-[#191715] flex flex-col justify-between p-6 fabric-texture">
+                  <!-- Top Editorial Tag -->
+                  <div class="flex items-center justify-between z-10">
+                    <span class="px-3 py-1 rounded-full bg-white/85 dark:bg-black/50 backdrop-blur-sm text-[11px] font-medium tracking-wider uppercase text-charcoal dark:text-alabaster">
+                      Signature Look 01
+                    </span>
+                    <span class="text-xs font-serif italic text-champagne font-semibold">Silk Armani</span>
+                  </div>
+
+                  <!-- Bespoke Editorial Modest Fashion Illustration SVG -->
+                  <div class="my-auto flex items-center justify-center py-2">
+                    <svg class="w-56 sm:w-64 h-auto drop-shadow-sm" viewBox="0 0 260 310" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustrasi Editorial Aisyah Silk Abaya">
+                      <!-- Soft Arch Halo -->
+                      <path d="M45 140C45 82.0101 92.0101 35 150 35C207.99 35 255 82.0101 255 140V285H45V140Z" fill="#A68A64" fill-opacity="0.10" transform="translate(-20, 0)"/>
+                      <!-- Hijab / Khimar Drape -->
+                      <path d="M130 34C106 34 90 52 87 78C84 104 75 135 68 158C88 166 112 168 130 168C148 168 172 166 192 158C185 135 176 104 173 78C170 52 154 34 130 34Z" fill="#DFD3C3"/>
+                      <path d="M130 34C146 34 162 48 166 75C170 102 180 135 188 158C170 164 150 167 130 168V34Z" fill="#D1C2AE"/>
+                      <!-- Face Silhouette Minimalist -->
+                      <ellipse cx="130" cy="76" rx="18" ry="23" fill="#F4E8DC"/>
+                      <!-- Abaya Flowing Dress Silhouette -->
+                      <path d="M88 145C88 132 106 124 130 124C154 124 172 132 172 145L204 286H56L88 145Z" fill="#8C7355"/>
+                      <!-- Abaya Drape Folds -->
+                      <path d="M130 124L114 286H148L130 124Z" fill="#7B6347" fill-opacity="0.45"/>
+                      <path d="M104 136L82 286" stroke="#F7F3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+                      <path d="M156 136L178 286" stroke="#F7F3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+                      <!-- Left & Right Sleeves -->
+                      <path d="M88 145L54 222L72 228L96 168" fill="#8C7355"/>
+                      <path d="M172 145L206 222L188 228L164 168" fill="#7D6549"/>
+                      <!-- Subtle Belt / Waist Tie -->
+                      <path d="M93 176C115 182 145 182 167 176" stroke="#E8DCCB" stroke-width="2.5" stroke-linecap="round"/>
+                      <path d="M130 180L123 212M130 180L138 208" stroke="#E8DCCB" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+
+                  <!-- Bottom Caption inside Arch -->
+                  <div class="z-10 bg-white/85 dark:bg-nightcard/90 backdrop-blur-md rounded-2xl p-4 border border-taupe/60 dark:border-white/10 flex items-center justify-between gap-3">
+                    <div>
+                      <p class="text-[11px] uppercase tracking-wider text-champagne font-semibold">Bestseller Minggu Ini</p>
+                      <h2 class="font-serif text-lg sm:text-xl font-semibold text-charcoal dark:text-alabaster">Aisyah Silk Abaya</h2>
+                      <p class="text-xs text-muted dark:text-[#A8A096]">Taupe Sand &bull; Wudhu & Busui Friendly</p>
+                    </div>
+                    <button
+                      type="button"
+                      onclick="openQuickView(1)"
+                      class="shrink-0 px-3.5 py-2 rounded-xl bg-charcoal dark:bg-champagne text-white text-xs font-medium hover:opacity-90 transition"
+                    >
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Swatch Card (Bottom Left) -->
+              <div class="hidden sm:flex items-center gap-3.5 bg-white dark:bg-nightcard p-3.5 rounded-2xl shadow-editorial border border-taupe/70 dark:border-white/10 absolute -bottom-5 -left-6 max-w-[240px]">
+                <div class="flex -space-x-2">
+                  <span class="w-7 h-7 rounded-full bg-[#C8B6A6] border-2 border-white dark:border-nightcard"></span>
+                  <span class="w-7 h-7 rounded-full bg-[#5E6B5C] border-2 border-white dark:border-nightcard"></span>
+                  <span class="w-7 h-7 rounded-full bg-[#2C2A29] border-2 border-white dark:border-nightcard"></span>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-charcoal dark:text-alabaster">Palet Earth-Tone</p>
+                  <p class="text-[11px] text-muted dark:text-[#A8A096]">Lembut & menenangkan</p>
+                </div>
+              </div>
+
+              <!-- Floating Quality Pill (Top Right) -->
+              <div class="hidden sm:flex items-center gap-2 bg-white dark:bg-nightcard px-4 py-2.5 rounded-full shadow-editorial border border-taupe/70 dark:border-white/10 absolute top-10 -right-4">
+                <span class="w-2.5 h-2.5 rounded-full bg-sage"></span>
+                <span class="text-xs font-medium text-charcoal dark:text-alabaster">Anti Kusut & Adem</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. KEUNGGULAN PRODUK (4 PILAR UTAMA)
+         ===================================================================== -->
+    <section id="keunggulan" class="py-14 sm:py-20 bg-sand/60 dark:bg-[#191715] border-y border-taupe/60 dark:border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs uppercase tracking-[0.22em] text-champagne font-semibold">Filosofi Kualitas</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-2 text-charcoal dark:text-alabaster">
+            Dirancang dengan Perhatian pada Setiap Detail
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Pilar 1 -->
+          <div class="bg-alabaster dark:bg-nightcard p-6 sm:p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 rounded-2xl bg-sand dark:bg-white/5 text-champagne flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster mb-2">
+              Material Adem & Tidak Menerawang
+            </h3>
+            <p class="text-sm text-muted dark:text-[#A8A096] leading-relaxed">
+              Menggunakan serat pilihan seperti <span class="text-charcoal dark:text-alabaster font-medium">Silk Armani, Katun Toyobo, dan Linen</span> premium yang sejuk di iklim tropis.
+            </p>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="bg-alabaster dark:bg-nightcard p-6 sm:p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 rounded-2xl bg-sand dark:bg-white/5 text-sage flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster mb-2">
+              Wudhu & Busui Friendly
+            </h3>
+            <p class="text-sm text-muted dark:text-[#A8A096] leading-relaxed">
+              Dilengkapi ritsleting depan tersembunyi (hidden zip) dan bukaan manset lengan yang praktis untuk berwudhu kapan saja.
+            </p>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="bg-alabaster dark:bg-nightcard p-6 sm:p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 rounded-2xl bg-sand dark:bg-white/5 text-champagne flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster mb-2">
+              Jahitan Kualitas Butik
+            </h3>
+            <p class="text-sm text-muted dark:text-[#A8A096] leading-relaxed">
+              Pola potongan ergonomis yang jatuh anggun mengikuti siluet tanpa membentuk lekuk tubuh, dengan finishing stik balik rapi.
+            </p>
+          </div>
+
+          <!-- Pilar 4 -->
+          <div class="bg-alabaster dark:bg-nightcard p-6 sm:p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 rounded-2xl bg-sand dark:bg-white/5 text-sage flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster mb-2">
+              Garansi Tukar Ukuran Mudah
+            </h3>
+            <p class="text-sm text-muted dark:text-[#A8A096] leading-relaxed">
+              Khawatir ukuran kurang pas? Nikmati kemudahan penukaran ukuran hingga 7 hari setelah paket diterima dengan proses cepat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. KATALOG PRODUK INTERAKTIF
+         ===================================================================== -->
+    <section id="katalog" class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header + Size Chart Link -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <span class="text-xs uppercase tracking-[0.22em] text-champagne font-semibold">Koleksi Pilihan</span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold mt-2 text-charcoal dark:text-alabaster">
+              Katalog Busana Muslim
+            </h2>
+            <p class="text-sm sm:text-base text-muted dark:text-[#A8A096] mt-2 max-w-xl">
+              Pilih warna favorit dan ukuran Anda langsung pada kartu produk, atau klik <strong class="font-medium text-charcoal dark:text-alabaster">Quick View</strong> untuk melihat detail serat kain.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onclick="openSizeModal()"
+            class="self-start md:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-sand dark:bg-white/5 border border-taupe dark:border-white/10 text-xs sm:text-sm font-medium text-charcoal dark:text-alabaster hover:border-champagne transition-colors"
+          >
+            <svg class="w-4 h-4 text-champagne" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+            </svg>
+            <span>Lihat Panduan Ukuran (Size Chart)</span>
+          </button>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- Product Grid (8 Complete Products) -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+          <!-- Product cards rendered dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. PROMO KOLEKSI SARIMBIT & NEWSLETTER
+         ===================================================================== -->
+    <section class="py-12 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[#EFE7DC] via-[#E7DDD0] to-[#DDD0C0] dark:from-[#26221E] dark:via-[#1F1C18] dark:to-[#181613] border border-taupe/80 dark:border-white/10 shadow-editorial">
+          <!-- Subtle Decorative Pattern -->
+          <div class="absolute inset-0 fabric-texture opacity-60 pointer-events-none"></div>
+
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-7 sm:p-12 lg:p-16 items-center">
+            <!-- Left: Sarimbit & Voucher Highlight -->
+            <div class="lg:col-span-7 space-y-5">
+              <span class="inline-block px-3.5 py-1 rounded-full bg-white/80 dark:bg-white/10 text-champagne text-xs font-semibold uppercase tracking-widest">
+                Koleksi Keluarga &amp; Acara Spesial
+              </span>
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-charcoal dark:text-alabaster leading-tight">
+                Harmoni Kebersamaan dalam <span class="italic font-normal text-champagne">Seri Sarimbit ALMAIRA</span>
+              </h2>
+              <p class="text-sm sm:text-base text-muted dark:text-[#B5AEA4] leading-relaxed max-w-2xl">
+                Lengkapi momen silaturahmi, walimah, dan hari raya dengan busana serasi untuk pasangan dan keluarga. Klaim voucher spesial <strong>Diskon 15%</strong> untuk pembelian pertama Anda.
+              </p>
+
+              <!-- One-Click Copy Voucher Box -->
+              <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-md">
+                <div class="flex-1 flex items-center justify-between px-4 py-3 rounded-2xl bg-white dark:bg-nightcard border border-dashed border-champagne">
+                  <div>
+                    <span class="block text-[10px] uppercase tracking-wider text-muted dark:text-[#A8A096]">Kode Voucher 15%</span>
+                    <span id="voucherCodeText" class="font-mono text-base sm:text-lg font-bold tracking-widest text-charcoal dark:text-alabaster">ALMAIRA15</span>
+                  </div>
+                  <button
+                    type="button"
+                    onclick="copyVoucherCode()"
+                    class="px-3.5 py-2 rounded-xl bg-champagne text-white text-xs font-semibold hover:bg-[#937752] active:scale-95 transition flex items-center gap-1.5"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                    </svg>
+                    <span id="copyBtnLabel">Salin Kode</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Newsletter Card -->
+            <div class="lg:col-span-5">
+              <div class="bg-alabaster/95 dark:bg-nightcard/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft">
+                <h3 class="font-serif text-2xl font-semibold text-charcoal dark:text-alabaster">
+                  Dapatkan Akses Katalog Eksklusif
+                </h3>
+                <p class="text-xs sm:text-sm text-muted dark:text-[#A8A096] mt-2 leading-relaxed">
+                  Jadilah yang pertama mengetahui peluncuran koleksi terbatas, pre-order Sarimbit, dan penawaran khusus member ALMAIRA.
+                </p>
+
+                <form id="newsletterForm" onsubmit="handleNewsletterSubmit(event)" class="mt-5 space-y-3">
+                  <div>
+                    <label for="newsletterEmail" class="sr-only">Alamat Email atau Nomor WhatsApp</label>
+                    <input
+                      id="newsletterEmail"
+                      type="email"
+                      required
+                      placeholder="Masukkan alamat email Anda..."
+                      class="w-full px-4 py-3 rounded-xl bg-white dark:bg-obsidian border border-taupe dark:border-white/15 text-sm text-charcoal dark:text-alabaster placeholder:text-muted/60 focus:outline-none focus:border-champagne transition"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="w-full py-3 px-5 rounded-xl bg-charcoal dark:bg-champagne text-white text-sm font-medium hover:bg-champagne dark:hover:bg-[#937752] transition shadow-sm"
+                  >
+                    Gabung Komunitas ALMAIRA
+                  </button>
+                </form>
+                <p class="text-[11px] text-muted dark:text-[#8E877E] mt-3">
+                  Kami menjaga privasi Anda. Bebas berhenti berlangganan kapan saja.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. TESTIMONI PELANGGAN TERVERIFIKASI
+         ===================================================================== -->
+    <section id="testimoni" class="py-16 sm:py-24 bg-sand/50 dark:bg-[#191715] border-t border-taupe/60 dark:border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header & Rating Summary -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="text-xs uppercase tracking-[0.22em] text-champagne font-semibold">Cerita Sahabat ALMAIRA</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-2 text-charcoal dark:text-alabaster">
+              Dipercaya Ribuan Muslimah &amp; Keluarga
+            </h2>
+          </div>
+
+          <div class="inline-flex items-center gap-4 bg-alabaster dark:bg-nightcard px-5 py-3.5 rounded-2xl border border-taupe/70 dark:border-white/10 shadow-soft">
+            <div class="text-right">
+              <p class="font-serif text-2xl sm:text-3xl font-bold text-charcoal dark:text-alabaster leading-none">4.9<span class="text-base font-normal text-muted">/5</span></p>
+              <p class="text-[11px] text-muted dark:text-[#A8A096] mt-1">1.240+ Pembeli Terverifikasi</p>
+            </div>
+            <div class="flex items-center gap-0.5 text-champagne" aria-label="Rating 4.9 dari 5 bintang">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Verified Review Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Review 1 -->
+          <article class="bg-alabaster dark:bg-nightcard p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex text-champagne text-sm">★★★★★</div>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium text-sage bg-sage/10 px-2.5 py-0.5 rounded-full">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Pembeli Terverifikasi
+                </span>
+              </div>
+              <p class="text-sm text-charcoal/90 dark:text-alabaster/90 leading-relaxed italic">
+                “MasyaAllah, Aisyah Silk Abaya-nya jatuh banget pas dipakai dan sama sekali nggak gerah meski dipakai kajian seharian di Jakarta. Jahitan rapi sekelas butik mahal!”
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-taupe/50 dark:border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-champagne/20 text-champagne font-serif font-bold flex items-center justify-center">
+                NA
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-charcoal dark:text-alabaster">Nadia Azzahra</h4>
+                <p class="text-xs text-muted dark:text-[#A8A096]">Jakarta Selatan &bull; Membeli Aisyah Silk Abaya (M)</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 2 -->
+          <article class="bg-alabaster dark:bg-nightcard p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex text-champagne text-sm">★★★★★</div>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium text-sage bg-sage/10 px-2.5 py-0.5 rounded-full">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Pembeli Terverifikasi
+                </span>
+              </div>
+              <p class="text-sm text-charcoal/90 dark:text-alabaster/90 leading-relaxed italic">
+                “Beli Sakinah Family Sarimbit Set untuk acara keluarga. Suami suka banget sama Zayd Linen Kurta karena bahannya adem dan nggak kaku. Admin WhatsApp-nya juga super ramah.”
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-taupe/50 dark:border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-sage/20 text-sage font-serif font-bold flex items-center justify-center">
+                RF
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-charcoal dark:text-alabaster">Rizky &amp; Fatimah</h4>
+                <p class="text-xs text-muted dark:text-[#A8A096]">Bandung &bull; Membeli Sakinah Sarimbit Set</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 3 -->
+          <article class="bg-alabaster dark:bg-nightcard p-7 rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex text-champagne text-sm">★★★★★</div>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium text-sage bg-sage/10 px-2.5 py-0.5 rounded-full">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Pembeli Terverifikasi
+                </span>
+              </div>
+              <p class="text-sm text-charcoal/90 dark:text-alabaster/90 leading-relaxed italic">
+                “Awalnya ragu pilih size L atau XL, ternyata bisa tukar ukuran dengan mudah sesuai garansi. Medina Voal-nya juga tegak di dahi tanpa perlu disetrika lama.”
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-taupe/50 dark:border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-champagne/20 text-champagne font-serif font-bold flex items-center justify-center">
+                SK
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-charcoal dark:text-alabaster">Siti Khadijah</h4>
+                <p class="text-xs text-muted dark:text-[#A8A096]">Surabaya &bull; Membeli Safiya Gamis &amp; Medina Voal</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       8B. FOOTER LENGKAP (INFORMASI TOKO, PEMBAYARAN & EKSPEDISI)
+       ===================================================================== -->
+  <footer class="bg-charcoal text-[#EAE4DC] pt-16 pb-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <!-- Brand & Boutique Info -->
+        <div class="lg:col-span-4 space-y-4">
+          <div>
+            <span class="font-serif text-3xl font-semibold tracking-[0.18em] text-white">ALMAIRA</span>
+            <p class="text-[10px] uppercase tracking-[0.28em] text-champagne mt-0.5">Contemporary Modest Wear</p>
+          </div>
+          <p class="text-sm text-[#B8B0A6] leading-relaxed">
+            Menghadirkan busana muslim modern yang memadukan kesantunan syar'i, kelembutan material alami, dan potongan minimalis abadi.
+          </p>
+          <div class="text-xs text-[#B8B0A6] space-y-1.5 pt-2">
+            <p><strong class="text-white">Butik Utama:</strong> Jl. Kemang Raya No. 48, Jakarta Selatan 12730</p>
+            <p><strong class="text-white">Jam Operasional:</strong> Senin – Minggu, 09.00 – 21.00 WIB</p>
+            <p><strong class="text-white">WhatsApp CS:</strong> +62 812-3456-7890</p>
+          </div>
+        </div>
+
+        <!-- Navigation & Help -->
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="font-serif text-lg font-semibold text-white">Navigasi</h4>
+          <ul class="space-y-2 text-sm text-[#B8B0A6]">
+            <li><a href="#beranda" class="hover:text-champagne transition">Beranda</a></li>
+            <li><a href="#katalog" class="hover:text-champagne transition">Katalog Koleksi</a></li>
+            <li><a href="#keunggulan" class="hover:text-champagne transition">Keunggulan Bahan</a></li>
+            <li><a href="#testimoni" class="hover:text-champagne transition">Ulasan Pelanggan</a></li>
+            <li><button type="button" onclick="openSizeModal()" class="hover:text-champagne transition text-left">Panduan Ukuran</button></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-serif text-lg font-semibold text-white">Layanan Pelanggan</h4>
+          <ul class="space-y-2 text-sm text-[#B8B0A6]">
+            <li><button type="button" onclick="openSizeModal()" class="hover:text-champagne transition text-left">Garansi Tukar Ukuran 7 Hari</button></li>
+            <li><button type="button" onclick="copyVoucherCode()" class="hover:text-champagne transition text-left">Klaim Voucher ALMAIRA15</button></li>
+            <li><button type="button" onclick="openCartDrawer()" class="hover:text-champagne transition text-left">Cek Keranjang &amp; Estimasi Ongkir</button></li>
+            <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="hover:text-champagne transition">Konsultasi Styling via WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <!-- Payment & Shipping Badges -->
+        <div class="lg:col-span-3 space-y-5">
+          <div>
+            <h4 class="font-serif text-lg font-semibold text-white mb-2.5">Metode Pembayaran</h4>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">QRIS</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">BCA</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">Mandiri</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">BNI</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">BRI</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">GoPay</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">OVO</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold tracking-wide text-white">DANA</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-serif text-lg font-semibold text-white mb-2.5">Partner Ekspedisi</h4>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-[11px] font-medium text-[#D5CEC5]">JNE Express</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-[11px] font-medium text-[#D5CEC5]">J&amp;T</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-[11px] font-medium text-[#D5CEC5]">SiCepat</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-[11px] font-medium text-[#D5CEC5]">Paxel Same-Day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8E877E]">
+        <p>&copy; 2026 ALMAIRA — Contemporary Modest Wear. Seluruh Hak Cipta Dilindungi.</p>
+        <p>Dirancang dengan ketulusan untuk kenyamanan berbusana muslimah.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       7. SLIDE-OVER KERANJANG BELANJA & CHECKOUT WHATSAPP
+       ===================================================================== -->
+  <div id="cartDrawerBackdrop" onclick="closeCartDrawer()" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden transition-opacity"></div>
+
+  <aside
+    id="cartDrawer"
+    aria-label="Keranjang Belanja"
+    class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-alabaster dark:bg-obsidian shadow-2xl border-l border-taupe dark:border-white/10 transform translate-x-full transition-transform duration-300 ease-out flex flex-col"
+  >
+    <!-- Drawer Header -->
+    <div class="px-6 py-5 border-b border-taupe/70 dark:border-white/10 flex items-center justify-between">
+      <div>
+        <h3 class="font-serif text-2xl font-semibold text-charcoal dark:text-alabaster">Keranjang Belanja</h3>
+        <p id="cartItemCountLabel" class="text-xs text-muted dark:text-[#A8A096]">0 item dipilih</p>
+      </div>
+      <button
+        type="button"
+        onclick="closeCartDrawer()"
+        aria-label="Tutup Keranjang"
+        class="p-2 rounded-full hover:bg-sand dark:hover:bg-white/10 text-charcoal dark:text-alabaster transition"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress Bar (Target: Rp 350.000) -->
+    <div class="px-6 py-3.5 bg-sand/70 dark:bg-[#1C1A17] border-b border-taupe/60 dark:border-white/10">
+      <p id="freeShippingText" class="text-xs font-medium text-charcoal dark:text-alabaster mb-2">
+        Belanja <span class="text-champagne font-semibold">Rp 350.000</span> lagi untuk Gratis Ongkir!
+      </p>
+      <div class="w-full h-2 rounded-full bg-taupe/80 dark:bg-white/10 overflow-hidden">
+        <div id="freeShippingBar" class="h-full bg-sage rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items List -->
+    <div id="cartItemsContainer" class="flex-1 overflow-y-auto px-6 py-5 space-y-4">
+      <!-- Dynamic Cart Items injected here -->
+    </div>
+
+    <!-- Drawer Footer: Voucher + Subtotal + WhatsApp Checkout -->
+    <div id="cartFooter" class="px-6 py-5 bg-white dark:bg-nightcard border-t border-taupe/70 dark:border-white/10 space-y-4">
+      <!-- Promo Voucher Input -->
+      <div class="flex items-center gap-2">
+        <input
+          id="cartVoucherInput"
+          type="text"
+          placeholder="Kode voucher (cth: ALMAIRA15)"
+          class="flex-1 px-3.5 py-2 rounded-xl bg-alabaster dark:bg-obsidian border border-taupe dark:border-white/15 text-xs uppercase tracking-wider text-charcoal dark:text-alabaster focus:outline-none focus:border-champagne"
+        />
+        <button
+          type="button"
+          onclick="applyCartVoucher()"
+          class="px-4 py-2 rounded-xl bg-sand dark:bg-white/10 text-xs font-semibold text-charcoal dark:text-alabaster hover:bg-champagne hover:text-white transition"
+        >
+          Terapkan
+        </button>
+      </div>
+
+      <!-- Price Breakdown -->
+      <div class="space-y-1.5 text-sm">
+        <div class="flex justify-between text-muted dark:text-[#A8A096]">
+          <span>Subtotal Produk</span>
+          <span id="cartSubtotalText">Rp 0</span>
+        </div>
+        <div id="cartDiscountRow" class="hidden flex justify-between text-sage font-medium">
+          <span>Diskon Voucher (ALMAIRA15 - 15%)</span>
+          <span id="cartDiscountText">- Rp 0</span>
+        </div>
+        <div class="flex justify-between text-muted dark:text-[#A8A096]">
+          <span>Estimasi Ongkos Kirim</span>
+          <span id="cartShippingStatusText" class="font-medium text-charcoal dark:text-alabaster">Dihitung saat checkout</span>
+        </div>
+        <div class="pt-2 border-t border-taupe/60 dark:border-white/10 flex justify-between items-baseline">
+          <span class="font-semibold text-charcoal dark:text-alabaster">Total Estimasi</span>
+          <span id="cartTotalText" class="font-serif text-2xl font-bold text-charcoal dark:text-alabaster">Rp 0</span>
+        </div>
+      </div>
+
+      <!-- Checkout via WhatsApp CTA -->
+      <button
+        type="button"
+        onclick="checkoutWhatsApp()"
+        class="w-full py-3.5 px-5 rounded-full bg-sage hover:bg-[#4E5B4C] text-white text-sm font-semibold shadow-soft transition flex items-center justify-center gap-2.5"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z" />
+        </svg>
+        <span>Pesan Sekarang via WhatsApp</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =====================================================================
+       MODAL QUICK VIEW PRODUK
+       ===================================================================== -->
+  <div id="quickViewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/55 backdrop-blur-xs">
+    <div class="relative w-full max-w-2xl bg-alabaster dark:bg-nightcard rounded-3xl border border-taupe dark:border-white/10 shadow-2xl overflow-hidden animate-fade-up max-h-[90vh] flex flex-col">
+      <button
+        type="button"
+        onclick="closeQuickView()"
+        aria-label="Tutup Quick View"
+        class="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 dark:bg-black/40 text-charcoal dark:text-alabaster hover:bg-sand transition"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div id="quickViewContent" class="overflow-y-auto p-6 sm:p-8">
+        <!-- Populated dynamically by openQuickView(productId) -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       8A. MODAL PANDUAN UKURAN (SIZE CHART GAMIS/ABAYA & KOKO/KURTA)
+       ===================================================================== -->
+  <div id="sizeChartModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/55 backdrop-blur-xs">
+    <div class="relative w-full max-w-2xl bg-alabaster dark:bg-nightcard rounded-3xl border border-taupe dark:border-white/10 shadow-2xl overflow-hidden animate-fade-up max-h-[90vh] flex flex-col">
+      <!-- Header -->
+      <div class="px-6 py-5 border-b border-taupe/70 dark:border-white/10 flex items-center justify-between">
+        <div>
+          <span class="text-[11px] uppercase tracking-widest text-champagne font-semibold">Standar Ukuran Butik</span>
+          <h3 class="font-serif text-2xl font-semibold text-charcoal dark:text-alabaster">Panduan Ukuran (Size Chart)</h3>
+        </div>
+        <button
+          type="button"
+          onclick="closeSizeModal()"
+          aria-label="Tutup Panduan Ukuran"
+          class="p-2 rounded-full hover:bg-sand dark:hover:bg-white/10 text-charcoal dark:text-alabaster transition"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 overflow-y-auto space-y-7">
+        <!-- Table 1: Gamis & Abaya -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster">1. Gamis &amp; Abaya Muslimah</h4>
+            <span class="text-xs text-muted dark:text-[#A8A096]">Satuan dalam sentimeter (cm)</span>
+          </div>
+          <div class="overflow-x-auto rounded-2xl border border-taupe/80 dark:border-white/10">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-sand dark:bg-white/5 text-charcoal dark:text-alabaster font-semibold">
+                <tr>
+                  <th class="px-4 py-3">Ukuran</th>
+                  <th class="px-4 py-3">Lingkar Dada (LD)</th>
+                  <th class="px-4 py-3">Panjang Baju</th>
+                  <th class="px-4 py-3">Panjang Lengan</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-taupe/60 dark:divide-white/10 text-charcoal/90 dark:text-alabaster/90">
+                <tr>
+                  <td class="px-4 py-3 font-semibold text-champagne">S</td>
+                  <td class="px-4 py-3">96 cm</td>
+                  <td class="px-4 py-3">135 cm</td>
+                  <td class="px-4 py-3">56 cm</td>
+                </tr>
+                <tr class="bg-sand/30 dark:bg-white/[0.02]">
+                  <td class="px-4 py-3 font-semibold text-champagne">M</td>
+                  <td class="px-4 py-3">100 cm</td>
+                  <td class="px-4 py-3">138 cm</td>
+                  <td class="px-4 py-3">58 cm</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-semibold text-champagne">L</td>
+                  <td class="px-4 py-3">106 cm</td>
+                  <td class="px-4 py-3">140 cm</td>
+                  <td class="px-4 py-3">59 cm</td>
+                </tr>
+                <tr class="bg-sand/30 dark:bg-white/[0.02]">
+                  <td class="px-4 py-3 font-semibold text-champagne">XL</td>
+                  <td class="px-4 py-3">114 cm</td>
+                  <td class="px-4 py-3">142 cm</td>
+                  <td class="px-4 py-3">60 cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 2: Koko & Kurta -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster">2. Koko &amp; Kurta Pria</h4>
+            <span class="text-xs text-muted dark:text-[#A8A096]">Satuan dalam sentimeter (cm)</span>
+          </div>
+          <div class="overflow-x-auto rounded-2xl border border-taupe/80 dark:border-white/10">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-sand dark:bg-white/5 text-charcoal dark:text-alabaster font-semibold">
+                <tr>
+                  <th class="px-4 py-3">Ukuran</th>
+                  <th class="px-4 py-3">Lingkar Dada (LD)</th>
+                  <th class="px-4 py-3">Panjang Baju</th>
+                  <th class="px-4 py-3">Panjang Lengan</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-taupe/60 dark:divide-white/10 text-charcoal/90 dark:text-alabaster/90">
+                <tr>
+                  <td class="px-4 py-3 font-semibold text-champagne">S</td>
+                  <td class="px-4 py-3">104 cm</td>
+                  <td class="px-4 py-3">76 cm</td>
+                  <td class="px-4 py-3">26 cm (Pendek) / 59 cm</td>
+                </tr>
+                <tr class="bg-sand/30 dark:bg-white/[0.02]">
+                  <td class="px-4 py-3 font-semibold text-champagne">M</td>
+                  <td class="px-4 py-3">108 cm</td>
+                  <td class="px-4 py-3">78 cm</td>
+                  <td class="px-4 py-3">27 cm (Pendek) / 60 cm</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-semibold text-champagne">L</td>
+                  <td class="px-4 py-3">114 cm</td>
+                  <td class="px-4 py-3">80 cm</td>
+                  <td class="px-4 py-3">28 cm (Pendek) / 61 cm</td>
+                </tr>
+                <tr class="bg-sand/30 dark:bg-white/[0.02]">
+                  <td class="px-4 py-3 font-semibold text-champagne">XL</td>
+                  <td class="px-4 py-3">120 cm</td>
+                  <td class="px-4 py-3">82 cm</td>
+                  <td class="px-4 py-3">29 cm (Pendek) / 62 cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Measurement Note -->
+        <div class="p-4 rounded-2xl bg-sand/70 dark:bg-white/5 text-xs text-muted dark:text-[#B5AEA4] leading-relaxed">
+          <strong class="text-charcoal dark:text-alabaster">Catatan Pengukuran:</strong> Toleransi jahitan &plusmn;1–2 cm karena proses pemotongan manual. Jika Anda berada di antara dua ukuran, disarankan memilih satu ukuran lebih besar untuk kenyamanan maksimal.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       TOAST NOTIFICATION BANNER (NON-BLOCKING FEEDBACK)
+       ===================================================================== -->
+  <div
+    id="toastBanner"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300"
+  >
+    <div class="px-5 py-3 rounded-full bg-charcoal dark:bg-[#2E2A26] text-alabaster text-xs sm:text-sm font-medium shadow-editorial border border-white/15 flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-champagne"></span>
+      <span id="toastMessage">Notifikasi</span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT: PRODUCT CATALOG, STATE, CART & WHATSAPP CHECKOUT
+       ===================================================================== -->
+  <script>
+    // ---------------------------------------------------------------------
+    // 1. PRODUCT DATA (8 MODEST WEAR ITEMS)
+    // ---------------------------------------------------------------------
+    const PRODUCTS = [
+      {
+        id: 1,
+        name: 'Aisyah Silk Abaya',
+        category: 'Gamis & Abaya',
+        price: 349000,
+        badge: 'Bestseller',
+        material: 'Armani Silk Premium (Flowy, Dingin & Tidak Menerawang)',
+        features: ['Busui Friendly (Hidden Front Zip)', 'Wudhu Friendly (Manset Kancing Mutiara)', 'Saku Samping Kanan & Kiri'],
+        description: 'Abaya siluet A-line dengan kilau lembut silk armani yang ringan dan jatuh anggun di setiap langkah. Ideal untuk kajian, walimah, maupun hari raya.',
+        silhouetteType: 'abaya',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Taupe Sand', hex: '#B9A692' },
+          { name: 'Olive Sage', hex: '#687564' },
+          { name: 'Midnight Noir', hex: '#2B2A29' }
+        ]
+      },
+      {
+        id: 2,
+        name: 'Zayd Linen Kurta',
+        category: 'Koko & Kurta',
+        price: 249000,
+        badge: 'Favorit Pria',
+        material: '100% Pure Rami Linen Breathable',
+        features: ['Kerah Shanghai Minimalis', 'Kancing Kayu Alami Tersembunyi', 'Belahan Samping Nyaman Bergerak'],
+        description: 'Kurta modern berpotongan relaxed fit dengan tekstur serat linen alami yang menyerap keringat dengan optimal untuk shalat Jumat dan acara keluarga.',
+        silhouetteType: 'kurta',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Oatmeal Cream', hex: '#DDD3C5' },
+          { name: 'Deep Sage', hex: '#556353' },
+          { name: 'Espresso Brown', hex: '#5A4638' }
+        ]
+      },
+      {
+        id: 3,
+        name: 'Medina Voal Laser Cut',
+        category: 'Hijab & Pashmina',
+        price: 89000,
+        badge: 'Mudah Dibentuk',
+        material: 'Ultrafine Voal Tryspan (115 x 115 cm)',
+        features: ['Tepi Laser Cut Presisi', 'Tegak Sempurna di Dahi', 'Tidak Kedap Telinga & Anti Lepek'],
+        description: 'Hijab segiempat berbahan ultrafine voal lembut yang langsung tegak saat dikenakan tanpa perlu banyak jarum pentul.',
+        silhouetteType: 'hijab',
+        sizes: ['All Size'],
+        colors: [
+          { name: 'Warm Latte', hex: '#C6B19D' },
+          { name: 'Dusty Rose', hex: '#C79E9B' },
+          { name: 'Ivory Silk', hex: '#EAE3D9' }
+        ]
+      },
+      {
+        id: 4,
+        name: 'Safiya Crinkle Gamis',
+        category: 'Gamis & Abaya',
+        price: 279000,
+        badge: 'Ironless',
+        material: 'Cey Airflow Crinkle Premium',
+        features: ['Anti Kusut Tanpa Disetrika', 'Busui & Wudhu Friendly', 'Lingkar Rok Lebar 2.6 Meter'],
+        description: 'Gamis harian super praktis dengan tekstur crinkle halus yang sejuk, ringan, dan bebas kusut untuk aktivitas padat maupun safar.',
+        silhouetteType: 'abaya',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Sage Mist', hex: '#7D8C79' },
+          { name: 'Terracotta Clay', hex: '#B47B64' },
+          { name: 'Charcoal Ash', hex: '#43413F' }
+        ]
+      },
+      {
+        id: 5,
+        name: 'Al-Fatih Toyobo Koko',
+        category: 'Koko & Kurta',
+        price: 229000,
+        badge: 'New Arrival',
+        material: 'Katun Toyobo Fodu Original Jepang',
+        features: ['Permukaan Halus & Rapi', 'Saku Dada Minimalis', 'Jahitan Double-Stitch Kuat'],
+        description: 'Kemeja koko lengan pendek dengan kilau serat katun Toyobo Fodu yang lembut di kulit dan tetap rapi sepanjang hari.',
+        silhouetteType: 'kurta',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Broken White', hex: '#EDE8E0' },
+          { name: 'Slate Blue', hex: '#5D6E7E' },
+          { name: 'Sandstone', hex: '#C4B39E' }
+        ]
+      },
+      {
+        id: 6,
+        name: 'Noor Silk Pashmina',
+        category: 'Hijab & Pashmina',
+        price: 119000,
+        badge: 'Luxury Drape',
+        material: 'Cradenza Textured Silk (180 x 75 cm)',
+        features: ['Bagian Dalam Matte Tidak Licin', 'Kilau Mewah Bagian Luar', 'Jahit Tepi Kecil Rapi'],
+        description: 'Pashmina bertekstur lembut dengan bagian dalam yang kesat sehingga mudah di-styling tanpa melorot, cocok untuk acara formal.',
+        silhouetteType: 'hijab',
+        sizes: ['All Size'],
+        colors: [
+          { name: 'Champagne Gold', hex: '#C5AC89' },
+          { name: 'Mocha Mousse', hex: '#8A715D' },
+          { name: 'Olive Leaf', hex: '#636E5A' }
+        ]
+      },
+      {
+        id: 7,
+        name: 'Sakinah Family Sarimbit Set',
+        category: 'Couple Series',
+        price: 549000,
+        badge: 'Paket Pasangan',
+        material: 'Kombinasi Armani Silk (Gamis) & Katun Toyobo (Koko)',
+        features: ['1 Gamis Ibu + 1 Koko Ayah', 'Senada dalam Palet Earth-Tone', 'Kemasan Box Eksklusif ALMAIRA'],
+        description: 'Set busana pasangan serasi untuk momen spesial keluarga. Dirancang harmonis dalam warna senada yang elegan dan berwibawa.',
+        silhouetteType: 'couple',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Warm Sand Harmony', hex: '#BFA992' },
+          { name: 'Forest Sage Harmony', hex: '#5E6E5B' }
+        ]
+      },
+      {
+        id: 8,
+        name: 'Mawaddah Couple Attire',
+        category: 'Couple Series',
+        price: 489000,
+        badge: 'Limited Edition',
+        material: 'Linen Blend & Soft Crepe Premium',
+        features: ['1 Tunik Midi + 1 Kurta Lengan Pendek', 'Potongan Modern Kontemporer', 'Breathable & Nyaman Seharian'],
+        description: 'Koleksi couple bergaya kontemporer minimalis untuk menghadiri undangan pernikahan, lamaran, maupun silaturahmi keluarga.',
+        silhouetteType: 'couple',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Caramel Taupe', hex: '#9E8269' },
+          { name: 'Stone Grey', hex: '#8D8984' }
+        ]
+      }
+    ];
+
+    const CATEGORIES = [
+      'Semua',
+      'Gamis & Abaya',
+      'Koko & Kurta',
+      'Hijab & Pashmina',
+      'Couple Series'
+    ];
+
+    const FREE_SHIPPING_THRESHOLD = 350000;
+    const WHATSAPP_NUMBER = '6281234567890';
+
+    // ---------------------------------------------------------------------
+    // 2. APPLICATION STATE
+    // ---------------------------------------------------------------------
+    let activeCategory = 'Semua';
+    let selectedVariants = {}; // { [productId]: { colorIndex: 0, size: 'M' } }
+    let cart = [];
+    let appliedVoucher = null; // 'ALMAIRA15' when active
+    let toastTimeout = null;
+
+    // Initialize default selections for each product
+    PRODUCTS.forEach(p => {
+      selectedVariants[p.id] = {
+        colorIndex: 0,
+        size: p.sizes.includes('M') ? 'M' : p.sizes[0]
+      };
+    });
+
+    // Safe localStorage retrieval
+    try {
+      const savedCart = localStorage.getItem('almaira_cart_v1');
+      if (savedCart) cart = JSON.parse(savedCart);
+      const savedTheme = localStorage.getItem('almaira_theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {
+      // Fallback silently in restricted iframe environments
+    }
+
+    // ---------------------------------------------------------------------
+    // 3. HELPER UTILITIES
+    // ---------------------------------------------------------------------
+    function formatRupiah(amount) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount);
+    }
+
+    function saveCartToStorage() {
+      try {
+        localStorage.setItem('almaira_cart_v1', JSON.stringify(cart));
+      } catch (e) {}
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastBanner');
+      const msgEl = document.getElementById('toastMessage');
+      msgEl.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-3');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-3');
+      }, 2800);
+    }
+
+    // Generates tailored editorial SVG garment illustrations tinted with the active swatch color
+    function renderGarmentIllustration(type, hexColor) {
+      if (type === 'kurta') {
+        return `
+          <svg class="w-36 h-40 mx-auto drop-shadow-sm transition-transform duration-300 group-hover:scale-105" viewBox="0 0 180 200" fill="none">
+            <path d="M58 42L90 32L122 42L152 68L138 92L124 80V172H56V80L42 92L28 68L58 42Z" fill="${hexColor}"/>
+            <path d="M76 36C80 45 100 45 104 36" stroke="#FAF8F5" stroke-opacity="0.65" stroke-width="2.5"/>
+            <line x1="90" y1="43" x2="90" y2="96" stroke="#FAF8F5" stroke-opacity="0.45" stroke-width="2"/>
+            <circle cx="90" cy="58" r="2" fill="#FAF8F5" fill-opacity="0.8"/>
+            <circle cx="90" cy="74" r="2" fill="#FAF8F5" fill-opacity="0.8"/>
+            <rect x="102" y="72" width="14" height="16" rx="2" stroke="#FAF8F5" stroke-opacity="0.35" stroke-width="1.2"/>
+          </svg>
+        `;
+      }
+      if (type === 'hijab') {
+        return `
+          <svg class="w-36 h-40 mx-auto drop-shadow-sm transition-transform duration-300 group-hover:scale-105" viewBox="0 0 180 200" fill="none">
+            <path d="M90 28C58 28 38 56 38 94C38 132 58 164 90 172C122 164 142 132 142 94C142 56 122 28 90 28Z" fill="${hexColor}"/>
+            <path d="M90 28C114 34 134 62 132 98C130 132 112 158 90 172C102 146 108 118 106 90C104 62 96 42 90 28Z" fill="#000000" fill-opacity="0.12"/>
+            <path d="M55 112C76 124 104 124 125 112" stroke="#FAF8F5" stroke-opacity="0.45" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M62 136C80 146 100 146 118 136" stroke="#FAF8F5" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        `;
+      }
+      if (type === 'couple') {
+        return `
+          <svg class="w-44 h-40 mx-auto drop-shadow-sm transition-transform duration-300 group-hover:scale-105" viewBox="0 0 220 200" fill="none">
+            <!-- Kurta (Back Right) -->
+            <path d="M118 42L144 34L170 42L194 64L182 84L170 74V162H116V74L106 84L94 64L118 42Z" fill="${hexColor}" fill-opacity="0.82"/>
+            <line x1="144" y1="42" x2="144" y2="86" stroke="#FAF8F5" stroke-opacity="0.5" stroke-width="1.8"/>
+            <!-- Abaya (Front Left) -->
+            <path d="M54 52C54 44 66 38 80 38C94 38 106 44 106 52L124 174H36L54 52Z" fill="${hexColor}"/>
+            <path d="M54 52L34 114L46 118L59 72" fill="${hexColor}"/>
+            <path d="M106 52L126 114L114 118L101 72" fill="${hexColor}"/>
+            <path d="M58 84C72 88 88 88 102 84" stroke="#FAF8F5" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        `;
+      }
+      // Default: Abaya / Gamis
+      return `
+        <svg class="w-36 h-40 mx-auto drop-shadow-sm transition-transform duration-300 group-hover:scale-105" viewBox="0 0 180 200" fill="none">
+          <path d="M62 42C62 33 74 28 90 28C106 28 118 33 118 42L142 176H38L62 42Z" fill="${hexColor}"/>
+          <path d="M62 42L36 116L49 121L67 66" fill="${hexColor}"/>
+          <path d="M118 42L144 116L131 121L113 66" fill="${hexColor}"/>
+          <path d="M90 28L79 176H101L90 28Z" fill="#000000" fill-opacity="0.08"/>
+          <path d="M66 78C80 83 100 83 114 78" stroke="#FAF8F5" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+          <path d="M90 81L85 104M90 81L95 102" stroke="#FAF8F5" stroke-opacity="0.45" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      `;
+    }
+
+    // ---------------------------------------------------------------------
+    // 4. RENDER CATEGORY TABS & PRODUCT CATALOG
+    // ---------------------------------------------------------------------
+    function renderCategoryTabs() {
+      const container = document.getElementById('categoryTabs');
+      container.innerHTML = CATEGORIES.map(cat => {
+        const isActive = cat === activeCategory;
+        return `
+          <button
+            type="button"
+            onclick="setCategory('${cat}')"
+            class="shrink-0 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
+              isActive
+                ? 'bg-charcoal dark:bg-champagne text-white shadow-soft'
+                : 'bg-sand/80 dark:bg-white/5 text-charcoal/80 dark:text-alabaster/80 hover:bg-taupe/70 dark:hover:bg-white/10'
+            }"
+          >
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setCategory(category) {
+      activeCategory = category;
+      renderCategoryTabs();
+      renderProductGrid();
+    }
+
+    function selectProductColor(productId, colorIndex) {
+      selectedVariants[productId].colorIndex = colorIndex;
+      renderProductGrid();
+    }
+
+    function selectProductSize(productId, size) {
+      selectedVariants[productId].size = size;
+      renderProductGrid();
+    }
+
+    function renderProductGrid() {
+      const grid = document.getElementById('productGrid');
+      const filtered = activeCategory === 'Semua'
+        ? PRODUCTS
+        : PRODUCTS.filter(p => p.category === activeCategory);
+
+      grid.innerHTML = filtered.map(product => {
+        const variant = selectedVariants[product.id];
+        const activeColor = product.colors[variant.colorIndex] || product.colors[0];
+
+        return `
+          <article class="group bg-white dark:bg-nightcard rounded-3xl border border-taupe/70 dark:border-white/10 shadow-soft hover:shadow-editorial transition-all duration-300 flex flex-col overflow-hidden">
+            <!-- Visual Showcase Header -->
+            <div class="relative bg-gradient-to-b from-[#F5EFE7] to-[#EBE2D5] dark:from-[#26221E] dark:to-[#1D1A17] pt-5 pb-4 px-4 fabric-texture">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-1 rounded-full bg-white/85 dark:bg-black/40 text-[10px] font-semibold uppercase tracking-wider text-champagne">
+                  ${product.badge}
+                </span>
+                <button
+                  type="button"
+                  onclick="openQuickView(${product.id})"
+                  class="px-2.5 py-1 rounded-full bg-white/85 dark:bg-black/40 hover:bg-charcoal hover:text-white dark:hover:bg-champagne text-[11px] font-medium text-charcoal dark:text-alabaster transition"
+                >
+                  Quick View
+                </button>
+              </div>
+
+              <!-- Dynamic Tinted Garment Illustration -->
+              <div onclick="openQuickView(${product.id})" class="cursor-pointer py-2">
+                ${renderGarmentIllustration(product.silhouetteType, activeColor.hex)}
+              </div>
+
+              <div class="text-center mt-1">
+                <span class="text-[11px] font-medium text-muted dark:text-[#A8A096]">
+                  Warna: <strong class="text-charcoal dark:text-alabaster font-semibold">${activeColor.name}</strong>
+                </span>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <p class="text-[11px] uppercase tracking-wider text-muted dark:text-[#A8A096]">${product.category}</p>
+                <h3 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster mt-0.5 group-hover:text-champagne transition-colors">
+                  <button type="button" onclick="openQuickView(${product.id})" class="text-left">
+                    ${product.name}
+                  </button>
+                </h3>
+                <p class="text-base font-bold text-champagne mt-1">${formatRupiah(product.price)}</p>
+              </div>
+
+              <!-- Interactive Color Swatches -->
+              <div class="space-y-3 pt-2 border-t border-taupe/50 dark:border-white/10">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-muted dark:text-[#A8A096]">Pilih Warna:</span>
+                  <div class="flex items-center gap-2">
+                    ${product.colors.map((c, idx) => `
+                      <button
+                        type="button"
+                        onclick="selectProductColor(${product.id}, ${idx})"
+                        title="${c.name}"
+                        aria-label="Pilih warna ${c.name}"
+                        class="w-5 h-5 rounded-full transition-transform ${
+                          idx === variant.colorIndex
+                            ? 'ring-2 ring-offset-2 ring-champagne dark:ring-offset-nightcard scale-110'
+                            : 'opacity-80 hover:opacity-100'
+                        }"
+                        style="background-color: ${c.hex};"
+                      ></button>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- Interactive Size Pills -->
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs text-muted dark:text-[#A8A096]">Ukuran:</span>
+                  <div class="flex items-center gap-1 flex-wrap justify-end">
+                    ${product.sizes.map(sz => `
+                      <button
+                        type="button"
+                        onclick="selectProductSize(${product.id}, '${sz}')"
+                        class="min-w-[28px] px-2 py-1 rounded-lg text-[11px] font-semibold transition ${
+                          sz === variant.size
+                            ? 'bg-charcoal dark:bg-champagne text-white'
+                            : 'bg-sand/80 dark:bg-white/5 text-charcoal/80 dark:text-alabaster/80 hover:bg-taupe'
+                        }"
+                      >
+                        ${sz}
+                      </button>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Add to Cart Button -->
+              <button
+                type="button"
+                onclick="addToCart(${product.id})"
+                class="w-full py-3 px-4 rounded-2xl bg-charcoal dark:bg-white/10 hover:bg-champagne dark:hover:bg-champagne text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                <span>Keranjang</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // ---------------------------------------------------------------------
+    // 5. QUICK VIEW PRODUCT MODAL
+    // ---------------------------------------------------------------------
+    function openQuickView(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const variant = selectedVariants[product.id];
+      const activeColor = product.colors[variant.colorIndex] || product.colors[0];
+      const modal = document.getElementById('quickViewModal');
+      const content = document.getElementById('quickViewContent');
+
+      content.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-5 rounded-2xl bg-gradient-to-b from-[#F5EFE7] to-[#E6DDD0] dark:from-[#26221E] dark:to-[#1C1916] p-6 text-center fabric-texture">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/85 dark:bg-black/40 text-[10px] font-semibold uppercase tracking-wider text-champagne mb-3">
+              ${product.badge}
+            </span>
+            ${renderGarmentIllustration(product.silhouetteType, activeColor.hex)}
+            <p class="text-xs font-medium text-muted dark:text-[#A8A096] mt-3">
+              Warna Terpilih: <strong class="text-charcoal dark:text-alabaster">${activeColor.name}</strong>
+            </p>
+          </div>
+
+          <div class="md:col-span-7 space-y-4">
+            <div>
+              <p class="text-xs uppercase tracking-widest text-champagne font-semibold">${product.category}</p>
+              <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal dark:text-alabaster mt-1">${product.name}</h3>
+              <p class="text-xl font-bold text-champagne mt-1">${formatRupiah(product.price)}</p>
+            </div>
+
+            <p class="text-sm text-muted dark:text-[#B5AEA4] leading-relaxed">
+              ${product.description}
+            </p>
+
+            <div class="p-3.5 rounded-2xl bg-sand/70 dark:bg-white/5 space-y-1.5 text-xs">
+              <p><strong class="text-charcoal dark:text-alabaster">Material Utama:</strong> <span class="text-muted dark:text-[#B5AEA4]">${product.material}</span></p>
+              <ul class="space-y-1 pt-1 text-charcoal/90 dark:text-alabaster/90">
+                ${product.features.map(f => `<li class="flex items-center gap-1.5"><span class="text-sage font-bold">&check;</span> ${f}</li>`).join('')}
+              </ul>
+            </div>
+
+            <!-- Color Selector inside Quick View -->
+            <div>
+              <span class="block text-xs font-medium text-muted dark:text-[#A8A096] mb-2">Pilih Warna (${activeColor.name}):</span>
+              <div class="flex items-center gap-2.5">
+                ${product.colors.map((c, idx) => `
+                  <button
+                    type="button"
+                    onclick="selectProductColor(${product.id}, ${idx}); openQuickView(${product.id});"
+                    class="w-7 h-7 rounded-full transition-transform ${
+                      idx === variant.colorIndex ? 'ring-2 ring-offset-2 ring-champagne dark:ring-offset-nightcard scale-110' : 'opacity-80 hover:opacity-100'
+                    }"
+                    style="background-color: ${c.hex};"
+                    title="${c.name}"
+                  ></button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Size Selector inside Quick View -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium text-muted dark:text-[#A8A096]">Pilih Ukuran:</span>
+                <button type="button" onclick="closeQuickView(); openSizeModal();" class="text-xs text-champagne underline font-medium">
+                  Lihat Size Chart
+                </button>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap">
+                ${product.sizes.map(sz => `
+                  <button
+                    type="button"
+                    onclick="selectProductSize(${product.id}, '${sz}'); openQuickView(${product.id});"
+                    class="px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+                      sz === variant.size
+                        ? 'bg-charcoal dark:bg-champagne text-white'
+                        : 'bg-sand dark:bg-white/5 text-charcoal dark:text-alabaster hover:bg-taupe'
+                    }"
+                  >
+                    ${sz}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="pt-2 flex gap-3">
+              <button
+                type="button"
+                onclick="addToCart(${product.id}); closeQuickView();"
+                class="flex-1 py-3.5 px-5 rounded-full bg-charcoal dark:bg-champagne hover:bg-champagne text-white text-sm font-semibold transition shadow-soft"
+              >
+                + Masukkan Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeQuickView() {
+      const modal = document.getElementById('quickViewModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // ---------------------------------------------------------------------
+    // 6. SIZE CHART MODAL CONTROLS
+    // ---------------------------------------------------------------------
+    function openSizeModal() {
+      const modal = document.getElementById('sizeChartModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSizeModal() {
+      const modal = document.getElementById('sizeChartModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // ---------------------------------------------------------------------
+    // 7. SHOPPING CART LOGIC & SLIDE-OVER DRAWER
+    // ---------------------------------------------------------------------
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const variant = selectedVariants[product.id];
+      const activeColor = product.colors[variant.colorIndex] || product.colors[0];
+      const itemKey = `${product.id}_${activeColor.name}_${variant.size}`;
+
+      const existing = cart.find(item => item.key === itemKey);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key: itemKey,
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          colorName: activeColor.name,
+          colorHex: activeColor.hex,
+          size: variant.size,
+          qty: 1
+        });
+      }
+
+      saveCartToStorage();
+      updateCartUI();
+      showToast(`${product.name} (${activeColor.name}, ${variant.size}) ditambahkan ke keranjang`);
+    }
+
+    function updateCartQty(itemKey, delta) {
+      const idx = cart.findIndex(i => i.key === itemKey);
+      if (idx === -1) return;
+
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+
+      saveCartToStorage();
+      updateCartUI();
+    }
+
+    function removeCartItem(itemKey) {
+      cart = cart.filter(i => i.key !== itemKey);
+      saveCartToStorage();
+      updateCartUI();
+      showToast('Produk dihapus dari keranjang');
+    }
+
+    function applyCartVoucher() {
+      const input = document.getElementById('cartVoucherInput');
+      const code = input.value.trim().toUpperCase();
+
+      if (code === 'ALMAIRA15') {
+        appliedVoucher = 'ALMAIRA15';
+        updateCartUI();
+        showToast('Kode voucher ALMAIRA15 (Diskon 15%) berhasil diterapkan!');
+      } else if (!code) {
+        showToast('Masukkan kode voucher terlebih dahulu');
+      } else {
+        showToast('Kode voucher tidak valid. Coba kode: ALMAIRA15');
+      }
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+      // Update Header Badge
+      const badge = document.getElementById('cartBadge');
+      badge.textContent = totalItems;
+      badge.classList.add('scale-125');
+      setTimeout(() => badge.classList.remove('scale-125'), 200);
+
+      document.getElementById('cartItemCountLabel').textContent = `${totalItems} item dipilih`;
+
+      // Update Free Shipping Progress Bar
+      const shippingText = document.getElementById('freeShippingText');
+      const shippingBar = document.getElementById('freeShippingBar');
+      const shippingStatus = document.getElementById('cartShippingStatusText');
+
+      const progressPct = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
+      shippingBar.style.width = `${progressPct}%`;
+
+      if (subtotal >= FREE_SHIPPING_THRESHOLD && subtotal > 0) {
+        shippingText.innerHTML = `<span class="text-sage font-semibold">&check; Selamat! Anda mendapatkan Gratis Ongkir Seluruh Indonesia.</span>`;
+        shippingStatus.innerHTML = `<span class="text-sage font-semibold">GRATIS ONGKIR</span>`;
+      } else {
+        const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+        shippingText.innerHTML = `Belanja <span class="text-champagne font-semibold">${formatRupiah(remaining)}</span> lagi untuk Gratis Ongkir!`;
+        shippingStatus.textContent = subtotal === 0 ? '-' : 'Dihitung saat checkout';
+      }
+
+      // Render Cart Item Cards
+      const container = document.getElementById('cartItemsContainer');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center py-12 px-4">
+            <div class="w-16 h-16 rounded-full bg-sand dark:bg-white/5 text-champagne flex items-center justify-center mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+              </svg>
+            </div>
+            <h4 class="font-serif text-xl font-semibold text-charcoal dark:text-alabaster">Keranjang Anda Masih Kosong</h4>
+            <p class="text-xs text-muted dark:text-[#A8A096] mt-1.5 max-w-xs">
+              Jelajahi koleksi abaya, kurta, hijab, dan sarimbit pilihan kami untuk mulai berbelanja.
+            </p>
+            <button
+              type="button"
+              onclick="closeCartDrawer()"
+              class="mt-5 px-6 py-2.5 rounded-full bg-charcoal dark:bg-champagne text-white text-xs font-semibold hover:opacity-90 transition"
+            >
+              Mulai Belanja
+            </button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="p-4 rounded-2xl bg-white dark:bg-nightcard border border-taupe/70 dark:border-white/10 flex items-center justify-between gap-3">
+            <div class="flex items-start gap-3">
+              <span
+                class="w-9 h-9 rounded-xl shrink-0 border border-black/10 mt-0.5"
+                style="background-color: ${item.colorHex};"
+                title="${item.colorName}"
+              ></span>
+              <div>
+                <h4 class="font-serif text-base font-semibold text-charcoal dark:text-alabaster leading-snug">${item.name}</h4>
+                <p class="text-xs text-muted dark:text-[#A8A096] mt-0.5">${item.colorName} &bull; Size ${item.size}</p>
+                <p class="text-xs font-bold text-champagne mt-1">${formatRupiah(item.price * item.qty)}</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-end gap-2">
+              <button
+                type="button"
+                onclick="removeCartItem('${item.key}')"
+                aria-label="Hapus item"
+                class="text-muted hover:text-red-500 transition p-1"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+              </button>
+
+              <div class="flex items-center rounded-xl bg-sand dark:bg-white/5 border border-taupe/70 dark:border-white/10">
+                <button
+                  type="button"
+                  onclick="updateCartQty('${item.key}', -1)"
+                  class="w-7 h-7 flex items-center justify-center text-sm font-semibold hover:text-champagne"
+                  aria-label="Kurangi jumlah"
+                >-</button>
+                <span class="w-6 text-center text-xs font-semibold">${item.qty}</span>
+                <button
+                  type="button"
+                  onclick="updateCartQty('${item.key}', 1)"
+                  class="w-7 h-7 flex items-center justify-center text-sm font-semibold hover:text-champagne"
+                  aria-label="Tambah jumlah"
+                >+</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Calculate Discount & Grand Total
+      const discountRow = document.getElementById('cartDiscountRow');
+      const discountText = document.getElementById('cartDiscountText');
+      let discountAmount = 0;
+
+      if (appliedVoucher === 'ALMAIRA15' && subtotal > 0) {
+        discountAmount = Math.round(subtotal * 0.15);
+        discountRow.classList.remove('hidden');
+        discountText.textContent = `- ${formatRupiah(discountAmount)}`;
+      } else {
+        discountRow.classList.add('hidden');
+      }
+
+      const grandTotal = Math.max(0, subtotal - discountAmount);
+      document.getElementById('cartSubtotalText').textContent = formatRupiah(subtotal);
+      document.getElementById('cartTotalText').textContent = formatRupiah(grandTotal);
+    }
+
+    function openCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('cartDrawerBackdrop');
+      backdrop.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        drawer.classList.remove('translate-x-full');
+      });
+    }
+
+    function closeCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('cartDrawerBackdrop');
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 280);
+    }
+
+    // ---------------------------------------------------------------------
+    // 8. WHATSAPP CHECKOUT ORDER FORMATTER
+    // ---------------------------------------------------------------------
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        showToast('Keranjang belanja masih kosong. Silakan pilih produk terlebih dahulu.');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const discountAmount = appliedVoucher === 'ALMAIRA15' ? Math.round(subtotal * 0.15) : 0;
+      const grandTotal = subtotal - discountAmount;
+      const isFreeShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
+
+      let lines = [
+        `Assalamu'alaikum Admin *ALMAIRA*, saya ingin memesan koleksi berikut:`,
+        ``
+      ];
+
+      cart.forEach((item, index) => {
+        lines.push(`${index + 1}. *${item.name}*`);
+        lines.push(`   Warna: ${item.colorName} | Ukuran: ${item.size} | Jumlah: ${item.qty}x`);
+        lines.push(`   Harga: ${formatRupiah(item.price * item.qty)}`);
+      });
+
+      lines.push(``);
+      lines.push(`Subtotal: ${formatRupiah(subtotal)}`);
+      if (discountAmount > 0) {
+        lines.push(`Voucher (${appliedVoucher} - 15%): -${formatRupiah(discountAmount)}`);
+      }
+      lines.push(`Promo Ongkir: ${isFreeShipping ? 'GRATIS ONGKIR (Min. Rp 350.000)' : 'Dihitung Admin sesuai alamat'}`);
+      lines.push(`*Total Pembayaran: ${formatRupiah(grandTotal)}*`);
+      lines.push(``);
+      lines.push(`Mohon info ketersediaan stok dan nomor rekening/QRIS pembayarannya ya Admin. Terima kasih!`);
+
+      const message = encodeURIComponent(lines.join('\n'));
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // ---------------------------------------------------------------------
+    // 9. VOUCHER COPY, NEWSLETTER & THEME TOGGLE
+    // ---------------------------------------------------------------------
+    function copyVoucherCode() {
+      const code = 'ALMAIRA15';
+      const tempInput = document.createElement('input');
+      tempInput.value = code;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(tempInput);
+
+      // Auto-fill into cart voucher box for convenience
+      const cartInput = document.getElementById('cartVoucherInput');
+      if (cartInput) cartInput.value = code;
+      appliedVoucher = code;
+      updateCartUI();
+
+      const label = document.getElementById('copyBtnLabel');
+      if (label) {
+        label.textContent = 'Tersalin!';
+        setTimeout(() => {
+          label.textContent = 'Salin Kode';
+        }, 2200);
+      }
+      showToast('Kode promo ALMAIRA15 disalin & siap digunakan di keranjang!');
+    }
+
+    function handleNewsletterSubmit(event) {
+      event.preventDefault();
+      const input = document.getElementById('newsletterEmail');
+      if (input.value.trim()) {
+        showToast('Terima kasih! Anda terdaftar di komunitas eksklusif ALMAIRA.');
+        input.value = '';
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.getElementById('themeToggleBtn').addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try {
+        localStorage.setItem('almaira_theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+      showToast(isDark ? 'Mode Gelap diaktifkan' : 'Mode Terang diaktifkan');
+    });
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeQuickView();
+        closeSizeModal();
+        closeCartDrawer();
+      }
+    });
+
+    // ---------------------------------------------------------------------
+    // 10. INITIAL RENDER ON LOAD
+    // ---------------------------------------------------------------------
+    renderCategoryTabs();
+    renderProductGrid();
+    updateCartUI();
+  </script>
+</body>
+</html>
